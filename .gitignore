@@ -2,10 +2,12 @@
 ####################
 .grunt
 node_modules
+.yo-rc.json
 
 # Sass Ignores #
 ################
 .sass-cache
+css/*.css
 
 # SublimeText #
 ###############

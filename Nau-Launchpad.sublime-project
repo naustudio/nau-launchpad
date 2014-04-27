@@ -3,7 +3,16 @@
 	[
 		{
 			"follow_symlinks": true,
-			"path": "."
+			"path": ".",
+			"folder_exclude_patterns":
+            [
+                ".grunt",
+                ".idea",
+                ".sass-cache",
+                ".sonar",
+                "node_modules"
+            ]
 		}
+
 	]
 }
