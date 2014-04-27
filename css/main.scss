@@ -141,12 +141,16 @@ body {
 		border: none;
 	}
 
+	&.launcher {
+		padding: 1.25rem 0 0 0;
+	}
 }
 
 .link {
 	display: inline-block;
 	margin: 0 1.250rem; /* 20px */
 	text-decoration: none;
+	color: $color-body;
 
 	&:hover,&:active {
 		opacity: 0.8;
@@ -156,11 +160,11 @@ body {
 
 .link-label {
 	font-weight: normal;
-	margin: 1.250rem 0 0 0;
+	margin: 1.250rem 0; /* 20px */
 }
 
 .search-provider-icon {
-	margin: 0 1.250rem; /* 20px */
+	margin: 0.5rem 1.250rem; /* 20px */
 }
 
 .web-search-input {
@@ -170,6 +174,10 @@ body {
 }
 
 .feedback {
+	.feedback-icon {
+		display: block;
+		margin: auto;
+	}
 	.title {
 		font-weight: normal;
 		font-size: 2.375rem; /* 38px */
@@ -187,11 +195,20 @@ body {
 	}
 
 	.big-btn {
+		text-decoration: none;
+		color: $color-body;
 		border: $color-primary 4px solid;
 		background: transparent;
 		font-size: 2.250rem; /* 36px */
 		font-weight: normal;
 		padding: 0.375rem 1.875rem; /* 6px 30px */
+
+		&:hover {
+			border-color: lighten($color-primary, 10%);
+		}
+		&:active {
+			color: $color-subtitle;
+		}
 	}
 }
 
@@ -282,21 +299,12 @@ body {
     clear: both;
 }
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
+@media only screen and (max-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
+    body {
+    	/* Turn off flex box */
+    	display: block;
+    }
 }
 
 /* ==========================================================================
