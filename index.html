@@ -1,39 +1,89 @@
 <!doctype html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Launchpad - Nau Studio</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+		<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.7.1.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/main.css">
+		<script src="js/vendor/modernizr-2.7.1.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 9]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		<div class="announcement hidden">
 
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+		</div>
+		<main class="main">
+			<section class="section feedback">
+				<img src="img/light-bulb.svg" alt="Idea">
+				<h1 class="title">Nau - Kaizen Teian</h1>
+				<h3 class="subtitle">Have you got something in mind?</h3>
+				<button class="big-btn">Let's share it!</button>
+			</section>
+			<section class="section launcher">
+				<a href="" class="link">
+					<img class="link-icon" src="img/ico-mail.png" height="65" width="80" alt="Mail">
+					<h4 class="link-label">Mail</h4>
+				</a>
+				<a href="" class="link">
+					<img src="img/ico-cal.png" height="65" width="70" alt="Calendar" class="link-icon">
+					<h4 class="link-label">Calendar</h4>
+				</a>
+				<a href="" class="link">
+					<img src="img/ico-gdrive.png" height="65" width="77" alt="GDrive" class="link-icon">
+					<h4 class="link-label">Drive</h4>
+				</a>
+				<a href="" class="link">
+					<img src="img/ico-github.png" height="65" width="85" alt="Github" class="link-icon">
+					<h4 class="link-label">Github</h4>
+				</a>
+				<a href="" class="link">
+					<img src="img/ico-bitbucket.png" height="65" width="55" alt="Bitbucket" class="link-icon">
+					<h4 class="link-label">Bitbucket</h4>
+				</a>
+				<a href="" class="link">
+					<img src="img/ico-trello.png" height="65" width="65" alt="Trello" class="link-icon">
+					<h4 class="link-label">Trello</h4>
+				</a>
+				<a href="" class="link">
+					<img src="img/ico-hrm.png" height="65" width="55" alt="Orange HRM" class="link-icon">
+					<h4 class="link-label">HRM</h4>
+				</a>
+				<a href="" class="link">
+					<img src="img/ico-blog.png" height="65" width="85" alt="Blog" class="link-icon">
+					<h4 class="link-label">Blog</h4>
+				</a>
+			</section>
+			<form id="web-search" class="section web-search">
+				<img src="img/ico-google.png" height="44" width="131" alt="Google" class="search-provider-icon">
+				<input type="search" class="web-search-input">
+			</form>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+		</main>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-    </body>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<script>
+			/* jshint ignore:start */
+			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+			function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+			e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+			e.src='//www.google-analytics.com/analytics.js';
+			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+			ga('create','UA-XXXXX-X');ga('send','pageview');
+			/* jshint ignore:end */
+		</script>
+	</body>
 </html>
