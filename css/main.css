@@ -97,6 +97,17 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+a {
+  color: #8c6b4a;
+  text-decoration: underline;
+}
+a:hover {
+  color: #aa855f;
+}
+a:active {
+  color: #aa855f;
+}
+
 /*EXPERIMENTS WITH FLEX BOX*/
 body {
   /* flexbox setup */
@@ -160,10 +171,10 @@ body {
   height: 400px;
 }
 .feedback .feedback-icon {
-  display: block;
-  margin: auto;
-  height: 5.625em;
-  /* 90/16 */
+  display: inline-block;
+}
+.feedback .feedback-icon:hover {
+  opacity: 0.8;
 }
 .feedback .title {
   font-weight: normal;
