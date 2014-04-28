@@ -4,34 +4,65 @@
 /*jshint node:true*/
 module.exports = function(grunt) {
 	'use strict';
+	// Load grunt tasks automatically
+	require('load-grunt-tasks')(grunt);
+
 	// Project configuration
 	grunt.initConfig({
+		config: {
+			dist: 'dist'
+		},
+
+		pkg: grunt['package'],
+
 		// Metadata
-		banner: '/*! <%= package.name %> - v<%= package.version %> - ' +
+		banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
 			'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-			'<%= package.homepage ? "* " + package.homepage + "\\n" : "" %>' +
-			'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= package.author.name %>;' +
-			' Licensed <%= props.license %> */\n',
+			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+			'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>; */\n',
 		// Task configuration
-		concat: {
+
+		// Reads HTML for usemin blocks to enable smart builds that automatically
+		// concat, minify and revision files. Creates configurations in memory so
+		// additional tasks can operate on them
+		useminPrepare: {
 			options: {
-				banner: '<%= banner %>',
-				stripBanners: true
+				root: './',
+				dest: '<%= config.dist %>'
 			},
+			html: 'index.html'
+		},
+
+		// Performs rewrites based on rev and the useminPrepare configuration
+		usemin: {
+			options: {
+				assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/img']
+			},
+			html: ['<%= config.dist %>/{,*/}*.html'],
+			css: ['<%= config.dist %>/css/{,*/}*.css']
+		},
+
+		copy: {
 			dist: {
-				src: ['js/plugins.js', 'js/main.js'],
-				dest: 'dist/js/main.js'
+				files: [{
+					expand: true,
+					dot: true,
+					cwd: './',
+					dest: '<%= config.dist %>',
+					src: [
+						'*.{ico,png,txt}',
+						'.htaccess',
+						'img/{,*/}*.{png,svg}',
+						'{,*/}*.html',
+						'css/fonts/{,*/}*.*',
+						//some js files need to be specified explicitly
+						'js/vendor/jquery-1.11.0.min.js',
+						'css/normalize.css'
+					]
+				}]
 			}
 		},
-		uglify: {
-			options: {
-				banner: '<%= banner %>'
-			},
-			dist: {
-				src: '<%= concat.dist.dest %>',
-				dest: 'dist/js/main.min.js'
-			}
-		},
+
 		sass: {
 			compile: { // Target
 				options: { // Target options
@@ -46,12 +77,40 @@ module.exports = function(grunt) {
 					dest: 'css/',
 					ext: '.css'
 				}]
+			},
+			dist: { // Target
+				options: { // Target options
+					style: 'compressed'
+				},
+
+				files: [{
+					expand: true,
+					cwd: 'css/',
+					src: ['*.scss', '!foundation.scss'],
+					dest: '<%= config.dist %>/css/',
+					ext: '.css'
+				}]
 			}
 		},
+
+		// Generates a custom Modernizr build that includes only the tests you
+		// reference in your app
+		modernizr: {
+			dist: {
+				devFile: 'js/vendor/modernizr-2.7.2.js',
+				outputFile: '<%= config.dist %>/js/vendor/modernizr.js',
+				files: {
+					src: [
+						'<%= config.dist %>/js/{,*/}*.js',
+						'<%= config.dist %>/css/{,*/}*.css',
+						'!<%= config.dist %>/js/vendor/*'
+					]
+				},
+				uglify: true
+			}
+		},
+
 		jshint: {
-			gruntfile: {
-				src: 'gruntfile.js'
-			},
 			app: {
 				src: ['js/**/*.js', '!js/vendor/*.js']
 			}
@@ -60,10 +119,6 @@ module.exports = function(grunt) {
 			files: ['test/**/*.html']
 		},
 		watch: {
-			gruntfile: {
-				files: '<%= jshint.gruntfile.src %>',
-				tasks: ['jshint:gruntfile']
-			},
 			sass: {
 				files: [
 					'css/*.scss'
@@ -76,21 +131,41 @@ module.exports = function(grunt) {
 				},
 				files: [
 					'*.html',
-					'<%= jshint.app.src %>',
+					'src/**/*.js',
 					'css/*.css'
 				]
 			}
+		},
+		// Empties folders to start fresh
+		clean: {
+			dist: {
+				files: [{
+					dot: true,
+					src: [
+						'.tmp',
+						'<%= config.dist %>/*',
+						'!<%= config.dist %>/.git*'
+					]
+				}]
+			},
+			server: '.tmp'
 		}
 	});
 
-	// These plugins provide necessary tasks
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-qunit');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-sass');
+	// Common tasks
+	grunt.registerTask('build', [
+		'clean:dist',
+		'sass:dist',
+		'jshint',
+		/*'qunit',*/
+		'useminPrepare',
+		'copy:dist',
+		'modernizr',
+		'concat',
+		'uglify',
+		'usemin'
+	]);
 
 	// Default task
-	grunt.registerTask('default', ['sass', 'jshint', 'qunit', 'concat', 'uglify']);
+	grunt.registerTask('default', ['sass:compile', 'watch']);
 };

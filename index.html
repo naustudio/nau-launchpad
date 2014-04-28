@@ -11,7 +11,9 @@
 
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/main.css">
-		<script src="js/vendor/modernizr-2.7.1.min.js"></script>
+		<!-- build:js js/vendor/modernizr.js -->
+		<script src="js/vendor/modernizr-2.7.2.js"></script>
+        <!-- endbuild -->
 	</head>
 	<body>
 		<!--[if lt IE 9]>
@@ -70,14 +72,14 @@
 				<img src="img/ico-google.png" height="44" width="131" alt="Google" class="search-provider-icon">
 				<input id="web-search-input" type="search" class="web-search-input">
 			</form>
-
 		</main>
-
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+		<!-- build:js js/main.js -->
 		<script src="js/plugins.js"></script>
 		<script src="js/main.js"></script>
+		<!-- endbuild -->
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 		<script>

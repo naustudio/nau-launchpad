@@ -1,3 +1,7 @@
+# Project Specific #
+dist/
+.tmp
+
 # NodeJS #
 ####################
 .grunt
