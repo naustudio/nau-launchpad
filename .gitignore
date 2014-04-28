@@ -11,7 +11,6 @@ node_modules
 # Sass Ignores #
 ################
 .sass-cache
-css/*.css
 
 # SublimeText #
 ###############
