@@ -2,7 +2,7 @@
 
 $color-primary: #8c6b4a;
 $color-body: black;
-$color-subtitle: lighten($color-body, 40%);
+$color-subtitle: lighten($color-body, 60%);
 
 
 /*
@@ -17,17 +17,6 @@ $color-subtitle: lighten($color-body, 40%);
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: 'Proxima Nova';
-    src: url('fonts/proximanova-light-webfont.eot');
-    src: url('fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/proximanova-light-webfont.woff') format('woff'),
-         url('fonts/proximanova-light-webfont.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-
 
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -41,12 +30,13 @@ $color-subtitle: lighten($color-body, 40%);
 
 html {
     color: $color-body;
+	font-family: "Proxima Nova", Helvetica, Arial, sans-serif;
     font-size: 1em;
     line-height: 1.4;
 }
 
 html, body {
-	font-family: "Proxima Nova", Helvetica, Arial, sans-serif;
+	height: 100%;
 }
 
 /*
@@ -123,8 +113,112 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+/*EXPERIMENTS WITH FLEX BOX*/
+body {
+	/* flexbox setup */
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
 
+	display: flex;
+	flex-direction: row;
 
+	align-items: center;
+}
+
+.main {
+	-webkit-flex: 1 1 auto;
+	flex: 1 1 auto;
+}
+
+.section {
+	border-bottom: rgba(0, 0, 0, 0.1) 1px solid;
+	text-align: center;
+	max-width: 1120px;
+	padding: 2.5em 0;
+	margin: auto;
+
+	&:last-child {
+		border: none;
+	}
+
+	&.launcher {
+		padding: 1.25em 0 0 0;
+	}
+}
+
+.link {
+	display: inline-block;
+	margin: 0 1.250em; /* 20px */
+	text-decoration: none;
+	color: $color-body;
+
+	&:hover,&:active {
+		opacity: 0.8;
+		color: $color-subtitle;
+	}
+}
+
+.link-label {
+	font-weight: normal;
+	margin: 1.250em 0; /* 20px */
+}
+
+.search-provider-icon {
+	margin: 0.25em 1.250em; /* 20px */
+}
+
+.web-search-input {
+	width: 60%;
+	border: lighten($color-primary, 40%) 1px solid;
+	padding: 0.5em;
+	margin: 0.25em 1.250em;
+}
+
+.feedback {
+
+	&.active {
+		height: 400px;
+	}
+
+	.feedback-icon {
+		display: block;
+		margin: auto;
+		height: 5.625em; /* 90/16 */
+	}
+	.title {
+		font-weight: normal;
+		font-size: 2.375em; /* 38px */
+		color: $color-primary;
+		line-height: 1;
+		margin: 0.526em 0 ; /* 20/38 */
+	}
+
+	.subtitle {
+		font-weight: normal;
+		font-size: 1.3125em; /* 21/16 */
+		color: $color-subtitle;
+		line-height: 1;
+		margin: 1em 0 ;
+	}
+
+	.big-btn {
+		display: inline-block;
+		text-decoration: none;
+		color: $color-body;
+		border: $color-primary 4px solid;
+		background: transparent;
+		font-size: 1.5em; /* 24px */
+		font-weight: normal;
+		padding: 0.25em 1.25em; /* 6/24 */ /* 30/24 */
+
+		&:hover {
+			border-color: lighten($color-primary, 10%);
+		}
+		&:active {
+			color: $color-subtitle;
+		}
+	}
+}
 
 
 
@@ -213,21 +307,12 @@ textarea {
     clear: both;
 }
 
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
+@media only screen and (max-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
+    body {
+    	/* Turn off flex box */
+    	display: block;
+    }
 }
 
 /* ==========================================================================

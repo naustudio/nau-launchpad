@@ -1,39 +1,96 @@
 <!doctype html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Launchpad - Nau Studio</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+		<!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.7.1.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/main.css">
+		<!-- build:js js/vendor/modernizr.js -->
+		<script src="js/vendor/modernizr-2.7.2.js"></script>
+        <!-- endbuild -->
+	</head>
+	<body>
+		<!--[if lt IE 9]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		<div class="announcement hidden">
 
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+		</div>
+		<main class="main">
+			<section class="section feedback">
+				<!-- TESTING TYPEFORM -->
+				<!-- <div class="typeform-widget" data-url="https://nau.typeform.com/to/QIQ7ZP" data-text="Kaizen Teian" style="width:100%;height:400px;"></div>
+				<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'widget.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()</script> -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-    </body>
+				<img class="feedback-icon" src="img/light-bulb.svg" width="90" height="90" alt="Idea">
+				<h1 class="title">Nau - Kaizen Teian</h1>
+				<h3 class="subtitle">Have you got something in mind?</h3>
+				<a href="https://nau.typeform.com/to/QIQ7ZP" class="big-btn" title="Open Nau Studio Feedback Form">Let's share it!</a>
+			</section>
+			<section class="section launcher">
+				<a href="https://mail.google.com/a/naustud.io" class="link" title="Open Nau Studio Web Mail">
+					<img class="link-icon" src="img/ico-mail.png" height="65" width="80" alt="Mail">
+					<h4 class="link-label">Mail</h4>
+				</a>
+				<a href="https://www.google.com/calendar/hosted/naustud.io" class="link" title="Open Calendar">
+					<img src="img/ico-cal.png" height="65" width="70" alt="Calendar" class="link-icon">
+					<h4 class="link-label">Calendar</h4>
+				</a>
+				<a href="https://drive.google.com/a/naustud.io" class="link" title="Open Nau Studio Google Drive">
+					<img src="img/ico-gdrive.png" height="65" width="77" alt="GDrive" class="link-icon">
+					<h4 class="link-label">Drive</h4>
+				</a>
+				<a href="https://github.com/naustudio" class="link" title="Go to Nau Studio Github">
+					<img src="img/ico-github.png" height="65" width="85" alt="Github" class="link-icon">
+					<h4 class="link-label">Github</h4>
+				</a>
+				<a href="https://bitbucket.org/naustudio" class="link" title="Go to Nau Studio Bitbucket">
+					<img src="img/ico-bitbucket.png" height="65" width="55" alt="Bitbucket" class="link-icon">
+					<h4 class="link-label">Bitbucket</h4>
+				</a>
+				<a href="https://trello.com/naustudio" class="link" title="Go to Nau Studio Trello">
+					<img src="img/ico-trello.png" height="65" width="65" alt="Trello" class="link-icon">
+					<h4 class="link-label">Trello</h4>
+				</a>
+				<a href="http://hr.naustud.io" class="link" title="Go to Nau Studio HR Management System">
+					<img src="img/ico-hrm.png" height="65" width="55" alt="Orange HRM" class="link-icon">
+					<h4 class="link-label">HRM</h4>
+				</a>
+				<a href="http://blog.naustud.io" class="link" title="Go to Nau Studio Blog">
+					<img src="img/ico-blog.png" height="65" width="85" alt="Blog" class="link-icon">
+					<h4 class="link-label">Blog</h4>
+				</a>
+			</section>
+			<form id="web-search" class="section web-search">
+				<img src="img/ico-google.png" height="44" width="131" alt="Google" class="search-provider-icon">
+				<input id="web-search-input" type="search" class="web-search-input">
+			</form>
+		</main>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+		<!-- build:js js/main.js -->
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+		<!-- endbuild -->
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<script>
+			/* jshint ignore:start */
+			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+			function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+			e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+			e.src='//www.google-analytics.com/analytics.js';
+			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+			ga('create','UA-XXXXX-X');ga('send','pageview');
+			/* jshint ignore:end */
+		</script>
+	</body>
 </html>
