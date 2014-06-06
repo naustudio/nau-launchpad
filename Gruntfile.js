@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 		// Performs rewrites based on rev and the useminPrepare configuration
 		usemin: {
 			options: {
-				assetsDirs: ['<%= config.dist %>/', '<%= config.dist %>/img', '<%= config.dist %>/css']
+				assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/img', '<%= config.dist %>/css']
 			},
 			html: ['<%= config.dist %>/{,*/}*.html'],
 			css: ['<%= config.dist %>/css/{,*/}*.css']
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 					src: [
 						'*.{ico,png,txt}',
 						'.htaccess',
-						'img/{,*/}*.{png,svg}',
+						'img/{,*/}*.{webp,svg}',
 						'css/fonts/{,*/}*.*'
 					]
 				}]
@@ -110,6 +110,17 @@ module.exports = function(grunt) {
 					src: ['*.scss', '!foundation.scss'],
 					dest: '<%= config.dist %>/css/',
 					ext: '.css'
+				}]
+			}
+		},
+
+		imagemin: {
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'img',
+					src: '{,*/}*.{gif,jpeg,jpg,png}',
+					dest: '<%= config.dist %>/img'
 				}]
 			}
 		},
@@ -173,19 +184,26 @@ module.exports = function(grunt) {
 		},
 
 		cdn: {
-			options: {
-				/** @required - root URL of your CDN (may contains sub-paths as shown below) */
-				cdn: '//d1gxb22tgqvqr1.cloudfront.net/start',
-				/** @optional  - if provided both absolute and relative paths will be converted */
-				flatten: true
-				/** @optional  - if provided will be added to the default supporting types */
-				// supportedTypes: { 'phtml': 'html' }
+			html: {
+				options: {
+					/** @required - root URL of your CDN (may contains sub-paths as shown below) */
+					cdn: '//d1gxb22tgqvqr1.cloudfront.net/start',
+					/** @optional  - if provided both absolute and relative paths will be converted */
+					flatten: true
+					/** @optional  - if provided will be added to the default supporting types */
+					// supportedTypes: { 'phtml': 'html' }
+				},
+				// /** @required  - string (or array of) including grunt glob variables */
+				src: ['<%= config.dist %>/*.html']
+				// * @optional  - if provided a copy will be stored without modifying original file
+				// dest: '<%= config.dist %>/'
 			},
-			dist: {
-				/** @required  - string (or array of) including grunt glob variables */
-				src: ['<%= config.dist %>/*.html', '<%= config.dist %>/css/*.css'],
-				/** @optional  - if provided a copy will be stored without modifying original file */
-				dest: '<%= config.dist %>/'
+			css: {
+				options: {
+					cdn: '<%= cdn.html.options.cdn %>/css',
+					flatten: true
+				},
+				src: ['<%= config.dist %>/css/*.css']
 			}
 		}
 	});
@@ -197,6 +215,7 @@ module.exports = function(grunt) {
 		'jshint',
 		/*'qunit',*/
 		'useminPrepare',
+		'imagemin',
 		'copy:html',
 		'copy:dist',
 		'modernizr',

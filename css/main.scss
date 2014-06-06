@@ -197,7 +197,7 @@ body {
 .feedback {
 
 	&.active {
-		height: 400px;
+		height: 410px;
 	}
 
 	.feedback-icon {
@@ -330,7 +330,7 @@ body {
 	clear: both;
 }
 
-@media only screen and (max-width: 35em) {
+@media only screen and (max-width: 560px) {
 	/* Style adjustments for viewports that meet the condition */
 	body {
 		/* Turn off flex box */
