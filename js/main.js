@@ -3,6 +3,11 @@
  */
 (function(doc, win) {
 	'use strict';
+
+	// For fun, displaying Nau ASCII Art:
+	var ASCII_ART = '   _.._             _.._           .--┐\n .`--.  \'.        .\'  .-`\'.       |   |\n.   .-\\   \\  (`) .   /-.   \\      |   |\n|   |  \\   \\     |   |  \\   \\     |   |\n|   |   \\   \\    |   |   \\   \\    |   |\n|   |    \\   \\   |   |    \\   \\   |   |\n|   |     \\   \\  |   |     \\   \\  |   |\n|   |      \\   `-/   |      \\   \\-\'   |\n|   |       \\_.-`   ,\'  (`)  \\   `-._.\'\n└--`         `-...-`          `-...-`\nNau Studio';
+	console.info(ASCII_ART);
+
 	var form = doc.getElementById('web-search');
 
 	form.addEventListener('submit', function(e) {
