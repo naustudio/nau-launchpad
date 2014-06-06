@@ -36,13 +36,38 @@ module.exports = function(grunt) {
 		// Performs rewrites based on rev and the useminPrepare configuration
 		usemin: {
 			options: {
-				assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/img']
+				assetsDirs: ['<%= config.dist %>/', '<%= config.dist %>/img', '<%= config.dist %>/css']
 			},
 			html: ['<%= config.dist %>/{,*/}*.html'],
 			css: ['<%= config.dist %>/css/{,*/}*.css']
 		},
 
+		filerev: {
+			dist: {
+				src: [
+					'<%= config.dist %>/img/**/*.{jpg,jpeg,gif,png,webp,svg}',
+					'<%= config.dist %>/css/**/*.{css,eot,ttf,woff}',
+					'<%= config.dist %>/js/**/*.js'
+				]
+			}
+		},
+
 		copy: {
+			html: {
+				options: {
+					process: function(content, path) {
+						if (path.indexOf('index.html') >= 0) {
+							grunt.log.ok('Update Google Analytics ID:', path);
+							content = content.replace('UA-XXXXX-X', 'UA-46467058-1');
+						}
+
+						return content;
+					}
+				},
+				files: {
+					'<%= config.dist %>/': '{,*/}*.html'
+				}
+			},
 			dist: {
 				files: [{
 					expand: true,
@@ -53,11 +78,7 @@ module.exports = function(grunt) {
 						'*.{ico,png,txt}',
 						'.htaccess',
 						'img/{,*/}*.{png,svg}',
-						'{,*/}*.html',
-						'css/fonts/{,*/}*.*',
-						//some js files need to be specified explicitly
-						'js/vendor/jquery-1.11.0.min.js',
-						'css/normalize.css'
+						'css/fonts/{,*/}*.*'
 					]
 				}]
 			}
@@ -149,6 +170,23 @@ module.exports = function(grunt) {
 				}]
 			},
 			server: '.tmp'
+		},
+
+		cdn: {
+			options: {
+				/** @required - root URL of your CDN (may contains sub-paths as shown below) */
+				cdn: '//d1gxb22tgqvqr1.cloudfront.net/start',
+				/** @optional  - if provided both absolute and relative paths will be converted */
+				flatten: true
+				/** @optional  - if provided will be added to the default supporting types */
+				// supportedTypes: { 'phtml': 'html' }
+			},
+			dist: {
+				/** @required  - string (or array of) including grunt glob variables */
+				src: ['<%= config.dist %>/*.html', '<%= config.dist %>/css/*.css'],
+				/** @optional  - if provided a copy will be stored without modifying original file */
+				dest: '<%= config.dist %>/'
+			}
 		}
 	});
 
@@ -159,10 +197,12 @@ module.exports = function(grunt) {
 		'jshint',
 		/*'qunit',*/
 		'useminPrepare',
+		'copy:html',
 		'copy:dist',
 		'modernizr',
 		'concat',
 		'uglify',
+		'filerev',
 		'usemin'
 	]);
 
