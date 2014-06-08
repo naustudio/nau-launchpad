@@ -114,6 +114,14 @@ module.exports = function(grunt) {
 			}
 		},
 
+		uncss: {
+			dist: {
+				files: {
+					'<%= config.dist %>/css/main.css': ['<%= config.dist %>/index.html']
+				}
+			}
+		},
+
 		imagemin: {
 			dist: {
 				files: [{
