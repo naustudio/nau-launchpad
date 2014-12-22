@@ -88,7 +88,6 @@ module.exports = function(grunt) {
 			compile: { // Target
 				options: { // Target options
 					style: 'expanded'
-					// sourcemap: true //need SASS 3.3, install with: gem install sass --pre
 				},
 
 				files: [{
@@ -101,7 +100,8 @@ module.exports = function(grunt) {
 			},
 			dist: { // Target
 				options: { // Target options
-					style: 'compressed'
+					style: 'compressed',
+					sourcemap: 'none'
 				},
 
 				files: [{
@@ -191,6 +191,16 @@ module.exports = function(grunt) {
 			server: '.tmp'
 		},
 
+		inline: {
+			dist: {
+				options:{
+					// uglify: true
+				},
+				src: ['<%= config.dist %>/index.html'],
+				dest: ['<%= config.dist %>/']
+			}
+		},
+
 		cdn: {
 			html: {
 				options: {
@@ -229,6 +239,7 @@ module.exports = function(grunt) {
 		'modernizr',
 		'concat',
 		'uglify',
+		'inline',
 		'filerev',
 		'usemin'
 	]);
